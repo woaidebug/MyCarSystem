@@ -25,4 +25,10 @@ public interface CarDao {
 
     @Insert("insert into carMessage(carName,carType,price,carSeries) values(#{carName},#{carType},#{price},#{carSeries})")
     void insertCar(Car car);
+
+    @Update("update carMessage set count=#{count} where id = #{id}")
+    void updateCountById(Car car);
+
+    @Select("select * from carMessage where carName like concat('%',#{carName},'%') limit #{current} , #{size}")
+    List<Car> listByCarName(String carName, int current, int size);
 }

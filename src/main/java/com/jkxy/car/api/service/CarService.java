@@ -1,6 +1,7 @@
 package com.jkxy.car.api.service;
 
 import com.jkxy.car.api.pojo.Car;
+import com.jkxy.car.api.utils.JSONResult;
 
 import java.util.List;
 
@@ -18,4 +19,8 @@ public interface CarService {
     void updateById(Car car);
 
     void insertCar(Car car);
+
+    JSONResult buyCar(int id, int buyCount);
+
+    List<Car> listByCarName(String carName, int current, int size);
 }

@@ -85,4 +85,31 @@ public class CarController {
         carService.insertCar(car);
         return JSONResult.ok();
     }
+
+    /**
+     * 车辆购买
+     * @param id
+     * @param buyCount
+     * @return
+     */
+    @GetMapping("buyCar")
+    public JSONResult buyCar(@RequestParam("id") int id, @RequestParam("buyCount") int buyCount) {
+        JSONResult result = carService.buyCar(id, buyCount);
+        return result;
+    }
+
+    /**
+     * 按品牌获取
+     *
+     * @param carName 车辆品牌
+     * @param current 当前页
+     * @param size    分页大小
+     * @return
+     */
+    @GetMapping("listByCarName")
+    public JSONResult buyCar(@RequestParam("carName") String carName,
+                             @RequestParam("current") int current, @RequestParam("size") int size) {
+        List<Car> carList = carService.listByCarName(carName, current, size);
+        return JSONResult.ok(carList);
+    }
 }
